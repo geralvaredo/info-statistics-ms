@@ -1,0 +1,18 @@
+#Global properties
+server:
+  port: 8080
+  forward-headers-strategy: framework # necessary for Swagger Springdoc
+
+#Spring
+spring:
+  datasource:
+    statistics:
+      url: jdbc:mysql://redragon-rds.ct6o8ccuwo0f.us-east-2.rds.amazonaws.com:3306/redragon?enabledTLSProtocols=TLSv1.2
+      username: "redragon"
+      password: "redragon123"
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
