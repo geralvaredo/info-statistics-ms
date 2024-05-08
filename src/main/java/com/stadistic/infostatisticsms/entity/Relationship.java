@@ -1,6 +1,7 @@
 package com.stadistic.infostatisticsms.entity;
 
 import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +25,6 @@ public class Relationship {
     @Column(name = "identifier_second_relative")
     private Integer identifierSecondRelative;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "relationship_id", referencedColumnName = "relationship_id")
-    private RelationshipType relationshipType;
+    @Column(name = "relationship_id")
+    private Integer relationshipType;
 }

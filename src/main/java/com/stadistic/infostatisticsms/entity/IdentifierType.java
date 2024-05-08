@@ -1,26 +1,25 @@
 package com.stadistic.infostatisticsms.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+import java.util.Objects;
+import java.util.stream.Stream;
+
 @Getter
-@Setter
-@Entity
-@Table(name = "IDENTIFIER_TYPE")
-public class IdentifierType {
-    @Id
-    @Column(name = "identifier_type_id", insertable = false, updatable = false)
-    private Integer identifierTypeId;
-    @Column(name = "identifier_type_id")
-    private String identifierTypeDescription;
+@AllArgsConstructor
+public enum IdentifierType {
+    DNI(1, "DNI"),
+    LIBRETA_CIVICA(2, "LIBRETA CIVICA"),
+    LIBRETA_ENROLAMIENTO(3, "LIBRETA DE ENROLAMIENTO");
+
+    private final Integer identifierTypeId;
+    private final String identifierTypeDescription;
+
+    public static IdentifierType getRelationshipDescription(String identifierTypeId) {
+        return Stream.of(IdentifierType.values())
+                .filter(x -> Objects.equals(x.getIdentifierTypeDescription(), identifierTypeId))
+                .findFirst()
+                .orElse(null);
+    }
 }

@@ -1,27 +1,29 @@
 package com.stadistic.infostatisticsms.entity;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
+import java.util.Objects;
+import java.util.stream.Stream;
+
 @Getter
-@Setter
-@Entity
-@Table(name = "RELATIONSHIP_TYPE")
-public class RelationshipType {
-    @Id
-    @Column(name = "relationship_id")
-    private Integer relationshipId;
-    @Column(name = "relationship_description")
-    private String relationshipDescription;
+@AllArgsConstructor
+public enum RelationshipType {
+    FATHER(1, "PADRE"),
+    BROTHER(2, "HERMANO"),
+    COUSIN(3, "PRIMO"),
+    UNCLE(4, "TIO"),
+    SON(5, "HIJO");
+
+    private final Integer relationshipId;
+    private final String relationshipDescription;
+
+    public static RelationshipType getRelationship(String relationship) {
+        return Stream.of(RelationshipType.values())
+                .filter(x -> Objects.equals(x.getRelationshipDescription(), relationship)
+                        || Objects.equals(x.getRelationshipId(), relationship))
+                .findFirst()
+                .orElse(null);
+    }
 }

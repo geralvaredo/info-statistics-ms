@@ -11,8 +11,19 @@ spring:
       username: "redragon"
       password: "redragon123"
       driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+springdoc:
+  pathsToMatch: /personas/** , /relaciones/**, /stats/**
+  api-docs.enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+

@@ -22,7 +22,7 @@ import java.util.Optional;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConfirmPersonRequest {
     private Integer identifier;
-    private Integer identifierType;
+    private Integer identifierTypeId;
     private String name;
     private String lastName;
     private Integer country;

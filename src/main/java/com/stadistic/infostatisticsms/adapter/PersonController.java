@@ -47,10 +47,11 @@ public class PersonController {
         return confirmPerson.deletePerson(id);
     }
 
-    @PostMapping("/{padre}/padre/{hijo}")
-    public String relationshipHandler(@RequestHeader Integer padre,
-                                      @RequestHeader Integer hijo) {
-        return confirmPerson.relation(padre, hijo);
+    @PostMapping("/{padre}/{relation}/{hijo}")
+    public String relationshipHandler(@RequestHeader("padre") Integer son,
+                                      @RequestHeader("hijo") Integer father,
+                                      @RequestHeader("relation") String relationship) {
+        return confirmPerson.parentsRelation(father, son, relationship);
     }
 
 }

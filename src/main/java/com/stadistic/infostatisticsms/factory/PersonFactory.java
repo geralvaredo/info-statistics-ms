@@ -9,7 +9,7 @@ public class PersonFactory {
                 .concat(person.getName())
                 .concat(" ")
                 .concat(person.getLastName())
-                .concat("fue")
+                .concat(" fue")
                 .concat(status);
     }
 }

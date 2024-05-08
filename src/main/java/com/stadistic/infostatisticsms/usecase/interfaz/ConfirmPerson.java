@@ -8,6 +8,6 @@ public interface ConfirmPerson {
     String savePerson(Person person);
     String deletePerson(Integer id);
     String updatePerson(Person person, Integer id);
-    String relation(Integer idPadre, Integer idHijo);
+    String parentsRelation(Integer idPadre, Integer idHijo, String relationship);
 
 }

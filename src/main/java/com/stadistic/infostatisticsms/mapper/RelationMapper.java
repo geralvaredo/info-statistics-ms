@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 @Mapper(componentModel = "spring")
 public interface RelationMapper {
 
-    @Mapping(source = "relationshipType", target = "relationshipType.relationshipId")
     Relationship map(ConfirmRelationRequest confirmRelationRequest);
-    @Mapping(source = "relationshipType.relationshipId", target = "relationshipType")
     RelationshipDto map(Relationship relationship);
 }
