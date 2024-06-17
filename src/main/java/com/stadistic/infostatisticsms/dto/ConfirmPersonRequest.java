@@ -10,8 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
-import java.util.Optional;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -21,14 +20,8 @@ import java.util.Optional;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConfirmPersonRequest {
-    private Integer identifier;
-    private Integer identifierTypeId;
     private String name;
-    private String lastName;
-    private Integer country;
-    private Timestamp birthDate;
-    private Timestamp createdAt;
-    private final Optional<Timestamp> deletedAt = Optional.empty();
-    private final Optional<Timestamp> updatedAt = Optional.empty();
-
+    private String email;
+    private String password;
+    private List<PhoneRequest> phones;
 }

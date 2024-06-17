@@ -1,11 +1,7 @@
 package com.stadistic.infostatisticsms.config.datasource;
 
-import com.stadistic.infostatisticsms.entity.Country;
-import com.stadistic.infostatisticsms.entity.CountryPerson;
 import com.stadistic.infostatisticsms.entity.Person;
-import com.stadistic.infostatisticsms.repository.CountryPersonRepository;
 import com.stadistic.infostatisticsms.repository.PersonRepository;
-import com.stadistic.infostatisticsms.repository.RelationRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -24,8 +20,7 @@ import java.util.Objects;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackageClasses ={Person.class, Country.class, PersonRepository.class,
-        RelationRepository.class, CountryPersonRepository.class, CountryPerson.class},
+@EnableJpaRepositories(basePackageClasses ={Person.class, PersonRepository.class},
         entityManagerFactoryRef = "statisticsEntityManagerFactory",
         transactionManagerRef = "statisticsTransactionManager"
 )

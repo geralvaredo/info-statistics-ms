@@ -11,15 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
-    @Mappings({
-            @Mapping(source = "country", target = "country.countryId"),
-            @Mapping(target = "deletedAt", ignore = true),
-            @Mapping(target = "updatedAt", ignore = true)
-    })
-    Person map(ConfirmPersonRequest confirmPersonRequest);
-
-    @Mappings({
-            @Mapping(source = "country.countryId", target = "country"),
-    })
     PersonDto map(Person person);
+
+    PersonDto map(String token);
 }

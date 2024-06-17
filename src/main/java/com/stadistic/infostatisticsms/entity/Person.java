@@ -1,20 +1,15 @@
 package com.stadistic.infostatisticsms.entity;
 
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import java.sql.Timestamp;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,33 +17,32 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Entity
-@Table(name = "PERSON")
+@Table(name = "PERSONA")
 public class Person {
 
     @Id
-    private Integer identifier;
-    @Column(name = "identifier_type_id")
-    private Integer identifierTypeId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
+    private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id", referencedColumnName = "country_id")
-    private Country country;
+    private String password;
 
-    @Column(name = "birth_date")
-    private Timestamp birthDate;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "phone_number")
+    private List<Phone> phones;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
+    private String token;
 
-    @Column(name = "deleted_at")
-    private Timestamp deletedAt;
+    @Column(name = "last_login")
+    private Timestamp lastLogin;
 
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    private Timestamp created;
+
+    private Timestamp modified;
+
+    private Boolean active;
 
 }

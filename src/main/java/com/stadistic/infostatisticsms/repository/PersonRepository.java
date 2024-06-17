@@ -11,10 +11,7 @@ import java.util.Map;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer> {
 
-    Person findByIdentifier(Integer id);
     @Override
     Person save(Person person);
-    boolean existsById (Integer id);
-    List<Person> findByIdentifier(Integer ... id);
-
+    boolean existsByEmail (String email);
 }

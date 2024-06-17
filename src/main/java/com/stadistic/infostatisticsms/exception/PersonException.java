@@ -13,13 +13,11 @@ public class PersonException extends NestedRuntimeException {
     @Serial
     private static final long serialVersionUID = 1L;
     private final int status;
-    private final String messageCode;
     private final String messageDescription;
 
-    public PersonException(HttpStatus status, String messageCode, String messageDescription) {
+    public PersonException(HttpStatus status, String messageDescription) {
         super(messageDescription);
         this.status = status.value();
-        this.messageCode = messageCode;
         this.messageDescription = messageDescription;
     }
 }
